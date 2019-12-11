@@ -1,0 +1,92 @@
+[
+    {
+        "id": "b4c5afa.0f2335",
+        "type": "tab",
+        "label": "Flow 5",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "456d87aa.444a08",
+        "type": "inject",
+        "z": "b4c5afa.0f2335",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 320,
+        "wires": [
+            [
+                "c93393d8.a5a93"
+            ]
+        ]
+    },
+    {
+        "id": "c93393d8.a5a93",
+        "type": "function",
+        "z": "b4c5afa.0f2335",
+        "name": "Payload",
+        "func": "msg.headers={\n    deviceKey:\"Nb4jPQ9jvwmYz6gF\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "7e18c3ea.5366ac"
+            ]
+        ]
+    },
+    {
+        "id": "7e18c3ea.5366ac",
+        "type": "http request",
+        "z": "b4c5afa.0f2335",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "http://api.mediatek.com/mcs/v2/devices/DtuolCRG/datachannels/LEDControl/datapoints.csv",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 490,
+        "y": 320,
+        "wires": [
+            [
+                "59801009.6f86",
+                "b710dbf4.b39ef8"
+            ]
+        ]
+    },
+    {
+        "id": "59801009.6f86",
+        "type": "http response",
+        "z": "b4c5afa.0f2335",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 710,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b710dbf4.b39ef8",
+        "type": "debug",
+        "z": "b4c5afa.0f2335",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 670,
+        "y": 420,
+        "wires": []
+    }
+]
